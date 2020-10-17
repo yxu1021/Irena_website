@@ -82,7 +82,7 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "Yirui (Irena) Xu"
-    subtitle = "Hi! Welcome to my personal site. I blog about the market segments I found interesting. Hope you'll enjoy it."
+    subtitle = "Hi! Welcome to my personal site. Hope you'll enjoy it."
     buttonText = "More about me"
 
 
