@@ -94,8 +94,8 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Educational Background"
       subtitle = "currently under a dual degree program"
-      image = "pic01.jpg"
-      url = "edu/educational background"
+      image = "project/01.jpg"
+      url = "projects/educational background"
 
     [[params.tiles.showcase]]
       title = "Professional Experience"
