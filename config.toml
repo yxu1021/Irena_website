@@ -49,7 +49,7 @@ disqusShortname = ""
 
     [[params.navigation.links]]
       name = "Educational Background"
-      url = "blogs"
+      url = "edu/educational background"
 
     [[params.navigation.links]]
       name = "Professional Experience"
