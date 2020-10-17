@@ -175,8 +175,6 @@ disqusShortname = ""
     email = "yxu.mfa2021@london.edu"
 
     [[params.contact.phone]]
-    title = "Phone in China"
-    phone = "(86) 188-1730-9780"
     title = "Phone in U.K."
     phone = "(44) 074-2102-8710"
     
