@@ -99,13 +99,13 @@ disqusShortname = ""
 
     [[params.tiles.showcase]]
       title = "Professional Experience"
-     # subtitle = ""
-      image = "pic02.jpg"
-      url = "blogs/tempus"
+      subtitle = "attracted to the primary financial markets"
+      image = "prof/13.jpg"
+      url = "prof/index"
 
     [[params.tiles.showcase]]
       title = "Graphing with R"
-     # subtitle = "Lorem Etiam Nullam"
+      subtitle = "Beyond Excel"
       image = "pic03.jpg"
       url = "hws/index"
 
