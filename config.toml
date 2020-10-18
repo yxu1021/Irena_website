@@ -100,7 +100,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Professional Experience"
       subtitle = "attracted to the primary financial markets"
-      image = "prof/13.jpg"
+      image = "project/13.jpg"
       url = "prof/index"
 
     [[params.tiles.showcase]]
