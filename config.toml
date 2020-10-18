@@ -56,8 +56,8 @@ disqusShortname = ""
       url = "blogs/ipsum"
 
     [[params.navigation.links]]
-      name = "Works to share"
-      url = "elements.html"
+      name = "Graphing with R"
+      url = "hws/index"
 
     # Add custom links here by uncommenting code below. To remove links just delete
     # the [[params.navigation.links]] map associated with that link. Copy and paste
@@ -95,7 +95,7 @@ disqusShortname = ""
       title = "Educational Background"
       subtitle = "currently under a dual degree program"
       image = "project/01.jpg"
-      url = "projects/edubk"
+      url = "projects/index"
 
     [[params.tiles.showcase]]
       title = "Professional Experience"
@@ -104,10 +104,10 @@ disqusShortname = ""
       url = "blogs/tempus"
 
     [[params.tiles.showcase]]
-      title = "Interests"
+      title = "Graphing with R"
      # subtitle = "Lorem Etiam Nullam"
       image = "pic03.jpg"
-      url = "blogs/magna"
+      url = "hws/index"
 
     [[params.tiles.showcase]]
       title = "Works to Share"
