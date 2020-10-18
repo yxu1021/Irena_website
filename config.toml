@@ -53,7 +53,7 @@ disqusShortname = ""
 
     [[params.navigation.links]]
       name = "Professional Experience"
-      url = "blogs/ipsum"
+      url = "prof/index"
 
     [[params.navigation.links]]
       name = "Graphing with R"
