@@ -1,11 +1,17 @@
 ---
 title: "Educational Background"
-output: html_document
+author: "Yirui-Irena-Xu"
+output: 
+  html_document:
+    highlight: zenburn
+    theme: flatly
+    toc: yes
+    toc_float: yes
 ---
 
-I gained my Bachelor degree in June, 2020 at Shanghai University of Finance and Economics. After that, I applied for and was luckily offered a place at the Global Master in Finance program which is jointly developed by London Business School and Fudan University.
+My name is **Yirui Xu**. You can call me **Irena**. I gained my Bachelor degree in June, 2020 at Shanghai University of Finance and Economics(SUFE). After that, I applied for and was luckily offered a place at the Global Master in Finance program which is jointly developed by London Business School(LBS) and Fudan University.
 
-# London Business School & Fudan University
+# LBS & Fudan Univ.
 Major: Financial Analysis & Corporate Finance
 
 Expected Graduation Date: 6/30/2022
@@ -16,7 +22,7 @@ Awards: LBS Scholarship
 
 ![](03.jpg){height=50%, width=50%}/
 
-# Shanghai University of Finance and Economics
+# Shanghai Univ. of Finance and Economics
 
 Major: Accounting
 
