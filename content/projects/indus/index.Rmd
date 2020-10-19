@@ -8,13 +8,13 @@ output:
     toc: yes
     toc_float: yes
 ---
-# On-demand delivery
+# **1.** On-demand delivery
 
-## What is on-demand delivery?
+## **1.1** What is on-demand delivery?
 
 On-demand delivery refers to where the company responds to demands within hours. On-demand delivery started with take-away food delivery and is gradually extending to all categories including medicines, groceries etc. There are 3 reasons why this market is attractive.
 
-## What makes it an attractive business?
+## **1.2** Why is it an attractive business?
 
 Firstly, the market is big. In 2019, the market size reached 141 bn RMB with 19.3 bn orders, and was expected to reach 1 trillion RMB in the next 10 years. On-demand delivery further expanded the coverage of offline stores by 3-5 kilometers. Such urban close-range e-commerce can effectively catch up with the changes in Chinese population.
 
@@ -29,14 +29,14 @@ Thirdly, the economics of scale works perfectly in the transportation industry, 
 
 
 
-# Fuel Cell Vehicles
+# **2.** Fuel Cell Vehicles
 
-## What is Fuel Cell Vehicles?
+## **2.1** What is Fuel Cell Vehicles?
 
 A fuel cell vehicle (FCV) or fuel cell electric vehicle (FCEV) is an electric vehicle that uses a fuel cell to power its onboard electric motor. Fuel cells in vehicles generate electricity generally using oxygen from the air and compressed hydrogen. Most fuel cell vehicles are classified as zero-emissions vehicles that emit only water and heat. 
 
 
-## Potential Application
+## **2.2** Potential Application
 Fuel cell vehicles are more suitable for long-distance transportation, while pure electric vehicles are more suitable for medium-distance and short-distance transportation within cities.
 
 ### Lithium-ion battery vehicle
@@ -53,14 +53,16 @@ Fuel cell vehicles are more suitable for long-distance transportation, while pur
 
 ### Hydrogen fuel cell vehicles
 
-**Development status**: Industrialization process is obviously later than lithium-ion battery car.
+**Development status**: Industrialization process is obviously later than lithium-ion battery ones.
 
-**Suitable for long distance, large air, commercial vehicles, ships, etc**:
+**Suitable for commercial long-distance heavy-loaded transportations**:
 
 (1) the energy density of hydrogen is about three times the gasoline diesel energy 
 
-(2) quick tanking improves the operation of commercial vehicle length 
+(2) quick tanking improves the operation of commercial vehicle efficiency
 
-(3) although the volume of hydrogen energy density is low, but the commercial vehicle to take up the space requirement is not high 
+(3) although the volume of hydrogen energy density is low, space requirements are much more flexible for commercial vehicles 
 
-(4) commercial car group of dense, often fixed path, a small amount of hydrogen station can satisfy the operating requirements.
+(4) commercial vehicles tend to have fixed routes and operate in groups, which means just a limited number of hydrogen station would satisfy their needs
+
+
