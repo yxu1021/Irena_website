@@ -36,16 +36,6 @@ Thirdly, the economics of scale works perfectly in the transportation industry, 
 
 A fuel cell vehicle (FCV) or fuel cell electric vehicle (FCEV) is an electric vehicle that uses a fuel cell to power its onboard electric motor. Fuel cells in vehicles generate electricity generally using oxygen from the air and compressed hydrogen. Most fuel cell vehicles are classified as zero-emissions vehicles that emit only water and heat. 
 
-## Excellent Performance
-
-### Fast tanking
-
-### Longer mileage
-![](pym.png){height=80%, width=80%}
-
-### Operate under low temperature
-
-### Environmental friendly
 
 ## Potential Application
 Fuel cell vehicles are more suitable for long-distance transportation, while pure electric vehicles are more suitable for medium-distance and short-distance transportation within cities.
@@ -60,8 +50,12 @@ Fuel cell vehicles are more suitable for long-distance transportation, while pur
 
 (2) Good user experience: The industry chain of lithium battery technology has been relatively mature
 
+![](veh.png){height=80%, width=80%}
+
 ### Hydrogen fuel cell vehicles
+
 **Development status**: Industrialization process is obviously later than lithium-ion battery car.
+
 **Suitable for long distance, large air, commercial vehicles, ships, etc**:
 
 (1) the energy density of hydrogen is about three times the gasoline diesel energy 
