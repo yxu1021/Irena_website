@@ -116,7 +116,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Interesting Markets"
       subtitle = "A Snapshot"
-      image = "pic04.jpg"
+      image = "bridge.jpg"
       url = "indus/index"
 
    # [[params.tiles.showcase]]
