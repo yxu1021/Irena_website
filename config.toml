@@ -49,19 +49,19 @@ disqusShortname = ""
 
     [[params.navigation.links]]
       name = "Educational Background"
-      url = "edu/index"
+      url = "projects/edu"
 
     [[params.navigation.links]]
       name = "Professional Experience"
-      url = "prof/index"
+      url = "projects/prof"
 
     [[params.navigation.links]]
       name = "Graphing with R"
-      url = "hws/index"
+      url = "projects/hws"
       
     [[params.navigation.links]]
       name = "Interesting Markets"
-      url = "indus/index"
+      url = "projects/indus"
 
     # Add custom links here by uncommenting code below. To remove links just delete
     # the [[params.navigation.links]] map associated with that link. Copy and paste
@@ -99,25 +99,25 @@ disqusShortname = ""
       title = "Educational Background"
       subtitle = "currently under a dual degree program"
       image = "project/01.jpg"
-      url = "projects/edu"
+      url = "blogs/edu"
 
     [[params.tiles.showcase]]
       title = "Professional Experience"
       subtitle = "attracted to the primary markets"
       image = "project/13.jpg"
-      url = "projects/prof"
+      url = "blogs/prof"
 
     [[params.tiles.showcase]]
       title = "Graphing with R"
       subtitle = "Beyond Excel"
       image = "pic03.jpg"
-      url = "projects/hws"
+      url = "blogs/hws"
 
     [[params.tiles.showcase]]
       title = "Interesting Markets"
       subtitle = "A Snapshot"
       image = "bridge.jpg"
-      url = "projects/indus"
+      url = "blogs/indus"
 
    # [[params.tiles.showcase]]
     #  title = "Consequat"

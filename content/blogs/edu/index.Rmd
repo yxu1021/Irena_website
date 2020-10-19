@@ -11,7 +11,7 @@ output:
 
 My name is **Yirui Xu**. You can call me **Irena**. I gained my Bachelor degree in June, 2020 at Shanghai University of Finance and Economics(SUFE). After that, I applied for and was luckily offered a place at the Global Master in Finance program which is jointly developed by London Business School(LBS) and Fudan University.
 
-# LBS & Fudan Univ.
+# LBS & Fudan University
 **Major**: Financial Analysis & Corporate Finance
 
 **Expected Graduation Date**: 6/30/2022
@@ -20,7 +20,7 @@ My name is **Yirui Xu**. You can call me **Irena**. I gained my Bachelor degree 
 
 **Awards**: LBS Scholarship
 
-![](03.jpg){height=50%, width=50%}/
+![](03.jpg){height=50%, width=50%}
 
 # Shanghai Univ. of Finance and Economics
 
@@ -30,8 +30,9 @@ My name is **Yirui Xu**. You can call me **Irena**. I gained my Bachelor degree 
 
 **Main Courses Included**: Strategic Business Reporting, Advanced Corporate Finance, Intermediate Macro-economics, Intermediate Micro-economics
 
-**Awards**:  Shanghai Distinguished Graduate Award, People's Scholarship/
-Certificate: ACCA (11/13 passed)
+**Awards**:  Shanghai Distinguished Graduate Award, People's Scholarship
+
+**Certificate**: ACCA (11/13 passed)
 
 ![](02.jpg){height=50%, width=50%}
 
