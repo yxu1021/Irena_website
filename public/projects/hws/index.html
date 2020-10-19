@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="2020">
+	<meta name="author" content="Irena">
+	<meta name="generator" content="Hugo 0.75.1" />
+	<title>Graphing with R &middot; Website for Irena</title>
+	<!-- Stylesheets -->
+	
+	<link rel="stylesheet" href="/css/main.css"/>
+	
+	
+
+	
+
+	<!-- Custom Fonts -->
+	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="js/ie/html5shiv.js"></script>
+	<script src="js/ie/html5shiv.jsrespond.min.js"></script>
+	<![endif]-->
+</head>
+
+    <body>
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+    <header id="header" class="alt">
+        <a href="/" class="logo"><strong>Irena</strong> <span>2022 GMiF STUDENT</span></a>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+<!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            
+                <li><a href="/">Home</a></li>
+            
+                <li><a href="/projects/edu">Educational Background</a></li>
+            
+                <li><a href="/projects/prof">Professional Experience</a></li>
+            
+                <li><a href="/projects/hws">Graphing with R</a></li>
+            
+                <li><a href="/projects/indus">Interesting Markets</a></li>
+            
+
+        </ul>
+        <ul class="actions vertical">
+            
+                <li><a href="/" class="button special fit">Get Started</a></li>
+            
+            
+                <li><a href="/" class="button fit">Contact Me</a></li>
+            
+        </ul>
+    </nav>
+
+        <!-- Main -->
+            <div id="main" class="alt">
+
+                
+                    <section id="one">
+                        <div class="inner">
+                            <header class="major">
+                                <h1>Graphing with R</h1>
+                            </header>
+                            
+                            
+
+
+<div id="excess-rentals-in-tfl-bike-sharing" class="section level1">
+<h1>Excess rentals in TfL bike sharing</h1>
+<p>Based on the TfL data on how many bikes were hired every single day. We can get the latest data by running the following</p>
+<pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;
+
+# Download TFL data to temporary file
+httr::GET(url, write_disk(bike.temp &lt;- tempfile(fileext = &quot;.xlsx&quot;)))</code></pre>
+<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2020-09-18T09%3A06%3A54/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20201019%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20201019T151442Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=370fc2264e8d7795f5406d332b4c7a01b2a1018faf03d7d26a89c8db19909e7d&amp;X-Amz-SignedHeaders=host]
+##   Date: 2020-10-19 15:14
+##   Status: 200
+##   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+##   Size: 165 kB
+## &lt;ON DISK&gt;  C:\Users\86188\AppData\Local\Temp\RtmpayI8n6\file4b0840272609.xlsx</code></pre>
+<pre class="r"><code># Use read_excel to read it as dataframe
+bike0 &lt;- read_excel(bike.temp,
+                   sheet = &quot;Data&quot;,
+                   range = cell_cols(&quot;A:B&quot;))
+
+# change dates to get year, month, and week
+bike &lt;- bike0 %&gt;% 
+  clean_names() %&gt;% 
+  rename (bikes_hired = number_of_bicycle_hires) %&gt;% 
+  mutate (year = year(day),
+          month = lubridate::month(day, label = TRUE),
+          week = isoweek(day))</code></pre>
+<p>We can visualize how actual rentals varied from expectations based on the data.</p>
+<pre class="r"><code>bike_graph1 &lt;- bike %&gt;% 
+  filter(year&gt;=2015) %&gt;% 
+  group_by(month) %&gt;% 
+  mutate(expected_rentals=median(bikes_hired)) %&gt;% 
+  ungroup %&gt;% 
+  group_by(month, year) %&gt;% 
+  summarise(expected_rentals = median(expected_rentals), actual_rentals = median(bikes_hired)) %&gt;% 
+  mutate(excess_rentals = actual_rentals - expected_rentals)
+  
+ggplot(bike_graph1, aes(x=month, group=1))+
+  geom_ribbon(aes(ymin = ifelse(actual_rentals &lt; expected_rentals, actual_rentals, expected_rentals), ymax = expected_rentals),fill= &quot;green&quot;, alpha=0.1)+
+  geom_ribbon(aes(ymin=expected_rentals, ymax=ifelse(actual_rentals &gt; expected_rentals, actual_rentals, expected_rentals)),fill=&quot;red&quot;, alpha=0.1)+
+    geom_line(aes(y=expected_rentals), color= &quot;blue&quot;, size=0.5)+
+    geom_line(aes(y=actual_rentals))+
+    facet_wrap(~year)+
+  theme_bw()</code></pre>
+<p><img src="/projects/hws/index_files/figure-html/bike_graph1-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.</p>
+<pre class="r"><code>bike_graph2 &lt;- bike %&gt;% 
+  filter(year&gt;=2015) %&gt;% 
+  group_by(week) %&gt;% 
+  mutate(weekly_average = median(bikes_hired)) %&gt;% 
+  ungroup %&gt;% 
+  group_by(week, year) %&gt;% 
+  summarise(weekly_average = mean(weekly_average), 
+            actual_bikes_hired = median(bikes_hired)) %&gt;% 
+  mutate(percentage_change = actual_bikes_hired / weekly_average - 1)
+
+ 
+ggplot(bike_graph2, aes(x=week, group=1))+
+  geom_rect(xmin=13,xmax=26, ymin=-0.6, ymax=0.6, colour=&quot;grey&quot;, alpha=0.003)+
+  geom_rect(xmin=39,xmax=52, ymin=-0.6, ymax=0.6, colour=&quot;grey&quot;, alpha=0.003)+
+  geom_ribbon(aes(ymin=0,
+                  ymax=ifelse(percentage_change&gt;0,percentage_change ,0)), 
+              fill=&quot;green&quot; ,alpha=0.15)+
+  geom_ribbon(aes(ymin=ifelse(percentage_change&lt;0, percentage_change,0), 
+                  ymax=0), 
+              fill=&quot;red&quot;, alpha=0.15)+
+  geom_line(aes(y=percentage_change))+
+  geom_rug(side=&quot;week&quot;, 
+           aes(color=ifelse(percentage_change&lt;0,&quot;red&quot;, &quot;green&quot;)))+
+  guides(color=FALSE)+
+  scale_x_continuous(breaks=c(13,26,39,52))+
+  scale_y_continuous(labels=scales::percent)+
+  facet_wrap(~year)+
+  theme_bw()</code></pre>
+<p><img src="/projects/hws/index_files/figure-html/bike_graph2-1.png" width="960" style="display: block; margin: auto;" /></p>
+</div>
+
+                        </div>
+                    </section>
+            <!-- Disqus Inject -->
+                
+            </div>
+            
+        <!-- Footer -->
+            
+                <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                
+                    <li><a href="" class="icon alt " target="_blank"><span class="label"></span></a></li>
+                
+                    <li><a href="" class="icon alt " target="_blank"><span class="label"></span></a></li>
+                
+                    <li><a href="" class="icon alt " target="_blank"><span class="label"></span></a></li>
+                
+                    <li><a href="https://github.com/yxu1021" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                
+                    <li><a href="www.linkedin.com/in/yiruixu" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Irena</li>
+                
+                <li>Design:  <a href="https://www.html5up.net">HTML5 UP</a></li>
+                
+            </ul>
+        </div>
+    </footer>
+
+            
+        </div>
+
+    <!-- Scripts -->
+        <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+
+    
+
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
+
+    
+
+    
+
+    </body>
+</html>

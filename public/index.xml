@@ -56,15 +56,46 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     
     <item>
       <title>Educational Background</title>
-      <link>/projects/</link>
+      <link>/projects/edu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/projects/</guid>
-      <description>I gained my Bachelor degree in June, 2020 at Shanghai University of Finance and Economics. After that, I applied for and was luckily offered a place at the Global Master in Finance program which is jointly developed by London Business School and Fudan University. Shanghai University of Finance and Economics
-Major: Accounting
-GPA: 3.8/4.0 (top5%)
-Main courses: Strategic Business Reporting, Advanced Corporate Finance, Intermediate Macro-economics, Intermediate Micro-economics
-Awards: Shanghai Distinguished Graduate Award, People’s Scholarship</description>
+      <guid>/projects/edu/</guid>
+      <description>My name is Yirui Xu. You can call me Irena. I gained my Bachelor degree in June, 2020 at Shanghai University of Finance and Economics(SUFE). After that, I applied for and was luckily offered a place at the Global Master in Finance program which is jointly developed by London Business School(LBS) and Fudan University.
+LBS &amp;amp; Fudan UniversityMajor: Financial Analysis &amp;amp; Corporate Finance
+Expected Graduation Date: 6/30/2022
+Main Courses Included: Analysis of Financial Statements, Corporate Finance, Asset Management, Date Analytics for Finance</description>
+    </item>
+    
+    <item>
+      <title>Graphing with R</title>
+      <link>/projects/hws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/hws/</guid>
+      <description>Excess rentals in TfL bike sharingBased on the TfL data on how many bikes were hired every single day. We can get the latest data by running the following
+url &amp;lt;- &amp;quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&amp;quot;# Download TFL data to temporary filehttr::GET(url, write_disk(bike.temp &amp;lt;- tempfile(fileext = &amp;quot;.xlsx&amp;quot;)))## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2020-09-18T09%3A06%3A54/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20201019%2Feu-west-1%2Fs3%2Faws4_request&amp;amp;X-Amz-Date=20201019T151442Z&amp;amp;X-Amz-Expires=300&amp;amp;X-Amz-Signature=370fc2264e8d7795f5406d332b4c7a01b2a1018faf03d7d26a89c8db19909e7d&amp;amp;X-Amz-SignedHeaders=host]## Date: 2020-10-19 15:14## Status: 200## Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet## Size: 165 kB## &amp;lt;ON DISK&amp;gt; C:\Users\86188\AppData\Local\Temp\RtmpayI8n6\file4b0840272609.xlsx# Use read_excel to read it as dataframebike0 &amp;lt;- read_excel(bike.</description>
+    </item>
+    
+    <item>
+      <title>Interesting Markets</title>
+      <link>/projects/indus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/indus/</guid>
+      <description>On-demand deliveryWhat is on-demand delivery?On-demand delivery refers to where the company responds to demands within hours. On-demand delivery started with take-away food delivery and is gradually extending to all categories including medicines, groceries etc. There are 3 reasons why this market is attractive.
+What makes it an attractive business?Firstly, the market is big. In 2019, the market size reached 141 bn RMB with 19.3 bn orders, and was expected to reach 1 trillion RMB in the next 10 years.</description>
+    </item>
+    
+    <item>
+      <title>Perfessional Experience</title>
+      <link>/projects/prof/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/prof/</guid>
+      <description>CHINA INTERNATIONAL CAPITAL CORPORATION, Shanghai, ChinaInvestment Banking Intern (3 months)/
+• Constructed 10-year DCF model for an instant delivery service company, estimated series of parameters based on industrial analysis and feedbacks from company’s managerial personnel
+• Analyzed the valuation of an instant delivery service company in ways of comparable companies, comparable transactions, and drafted 8+ slides and QA book for investor communication
+• Explored possible storylines and produced 15+ slides for pitchbooks and CIMs over different companies, covering competitive landscape, trends and investment highlights</description>
     </item>
     
   </channel>

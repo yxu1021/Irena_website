@@ -1,0 +1,123 @@
+---
+title: "Graphing with R"
+author: "Yirui-Irena-Xu"
+output: 
+  html_document:
+    highlight: zenburn
+    theme: flatly
+    toc: yes
+    toc_float: yes
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, include=FALSE,  echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+library(infer)
+```
+
+# Excess rentals in TfL bike sharing
+
+Based on the TfL data on how many bikes were hired every single day. We can get the latest data by running the following
+
+```{r, get_tfl_data, cache=TRUE}
+url <- "https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx"
+
+# Download TFL data to temporary file
+httr::GET(url, write_disk(bike.temp <- tempfile(fileext = ".xlsx")))
+
+# Use read_excel to read it as dataframe
+bike0 <- read_excel(bike.temp,
+                   sheet = "Data",
+                   range = cell_cols("A:B"))
+
+# change dates to get year, month, and week
+bike <- bike0 %>% 
+  clean_names() %>% 
+  rename (bikes_hired = number_of_bicycle_hires) %>% 
+  mutate (year = year(day),
+          month = lubridate::month(day, label = TRUE),
+          week = isoweek(day))
+```
+
+
+
+We can visualize how actual rentals varied from expectations based on the data. 
+
+```{r bike_graph1, fig.width=10}
+bike_graph1 <- bike %>% 
+  filter(year>=2015) %>% 
+  group_by(month) %>% 
+  mutate(expected_rentals=median(bikes_hired)) %>% 
+  ungroup %>% 
+  group_by(month, year) %>% 
+  summarise(expected_rentals = median(expected_rentals), actual_rentals = median(bikes_hired)) %>% 
+  mutate(excess_rentals = actual_rentals - expected_rentals)
+  
+ggplot(bike_graph1, aes(x=month, group=1))+
+  geom_ribbon(aes(ymin = ifelse(actual_rentals < expected_rentals, actual_rentals, expected_rentals), ymax = expected_rentals),fill= "green", alpha=0.1)+
+  geom_ribbon(aes(ymin=expected_rentals, ymax=ifelse(actual_rentals > expected_rentals, actual_rentals, expected_rentals)),fill="red", alpha=0.1)+
+    geom_line(aes(y=expected_rentals), color= "blue", size=0.5)+
+    geom_line(aes(y=actual_rentals))+
+    facet_wrap(~year)+
+  theme_bw()
+  
+```
+
+The second one looks at percentage changes from the expected level of weekly rentals. The two grey shaded rectangles correspond to the second (weeks 14-26) and fourth (weeks 40-52) quarters.
+
+```{r bike_graph2, fig.width=10}
+bike_graph2 <- bike %>% 
+  filter(year>=2015) %>% 
+  group_by(week) %>% 
+  mutate(weekly_average = median(bikes_hired)) %>% 
+  ungroup %>% 
+  group_by(week, year) %>% 
+  summarise(weekly_average = mean(weekly_average), 
+            actual_bikes_hired = median(bikes_hired)) %>% 
+  mutate(percentage_change = actual_bikes_hired / weekly_average - 1)
+
+ 
+ggplot(bike_graph2, aes(x=week, group=1))+
+  geom_rect(xmin=13,xmax=26, ymin=-0.6, ymax=0.6, colour="grey", alpha=0.003)+
+  geom_rect(xmin=39,xmax=52, ymin=-0.6, ymax=0.6, colour="grey", alpha=0.003)+
+  geom_ribbon(aes(ymin=0,
+                  ymax=ifelse(percentage_change>0,percentage_change ,0)), 
+              fill="green" ,alpha=0.15)+
+  geom_ribbon(aes(ymin=ifelse(percentage_change<0, percentage_change,0), 
+                  ymax=0), 
+              fill="red", alpha=0.15)+
+  geom_line(aes(y=percentage_change))+
+  geom_rug(side="week", 
+           aes(color=ifelse(percentage_change<0,"red", "green")))+
+  guides(color=FALSE)+
+  scale_x_continuous(breaks=c(13,26,39,52))+
+  scale_y_continuous(labels=scales::percent)+
+  facet_wrap(~year)+
+  theme_bw()
+
+```
