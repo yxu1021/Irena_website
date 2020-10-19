@@ -1,13 +1,11 @@
 ---
 title: "Interesting Markets"
-description: ''
-slug: ipsum
-image: pic10.jpg
-keywords: ''
-categories:
-- ''
-- ''
-draft: no
+output: 
+  html_document:
+    highlight: zenburn
+    theme: flatly
+    toc: yes
+    toc_float: yes
 ---
 # On-demand delivery
 
