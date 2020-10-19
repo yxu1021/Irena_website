@@ -1,5 +1,6 @@
 ---
 title: "Perfessional Experience"
+author: "Yirui-Irena-Xu"
 output: 
   html_document:
     highlight: zenburn

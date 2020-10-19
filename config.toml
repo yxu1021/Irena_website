@@ -99,25 +99,25 @@ disqusShortname = ""
       title = "Educational Background"
       subtitle = "currently under a dual degree program"
       image = "project/01.jpg"
-      url = "blogs/edu"
+      url = "projects/edu"
 
     [[params.tiles.showcase]]
       title = "Professional Experience"
       subtitle = "attracted to the primary markets"
       image = "project/13.jpg"
-      url = "blogs/prof"
+      url = "projects/prof"
 
     [[params.tiles.showcase]]
       title = "Graphing with R"
       subtitle = "Beyond Excel"
       image = "pic03.jpg"
-      url = "blogs/hws"
+      url = "projects/hws"
 
     [[params.tiles.showcase]]
       title = "Interesting Markets"
       subtitle = "A Snapshot"
       image = "bridge.jpg"
-      url = "blogs/indus"
+      url = "projects/indus"
 
    # [[params.tiles.showcase]]
     #  title = "Consequat"

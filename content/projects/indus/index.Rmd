@@ -1,5 +1,6 @@
 ---
 title: "Interesting Markets"
+author: "Yirui-Irena-Xu"
 output: 
   html_document:
     highlight: zenburn

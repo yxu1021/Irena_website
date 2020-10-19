@@ -1,5 +1,5 @@
 ---
-output: html_document
+title: "Graphing with R"
 author: "Yirui-Irena-Xu"
 output: 
   html_document:
