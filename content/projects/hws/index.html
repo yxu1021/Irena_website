@@ -13,17 +13,14 @@ output:
 
 <div id="excess-rentals-in-tfl-bike-sharing" class="section level1">
 <h1>Excess rentals in TfL bike sharing</h1>
-<p>Based on the TfL data on how many bikes were hired every single day. We can get the latest data by running the following</p>
-<pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;
-
-# Download TFL data to temporary file
-httr::GET(url, write_disk(bike.temp &lt;- tempfile(fileext = &quot;.xlsx&quot;)))</code></pre>
-<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2020-09-18T09%3A06%3A54/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20201019%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20201019T151442Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=370fc2264e8d7795f5406d332b4c7a01b2a1018faf03d7d26a89c8db19909e7d&amp;X-Amz-SignedHeaders=host]
-##   Date: 2020-10-19 15:14
+<p>We can get the latest TfL data on how many bikes were hired every single day by running the following</p>
+<pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/number-bicycle-hires/ac29363e-e0cb-47cc-a97a-e216d900a6b0/tfl-daily-cycle-hires.xlsx&quot;</code></pre>
+<pre><code>## Response [https://airdrive-secure.s3-eu-west-1.amazonaws.com/london/dataset/number-bicycle-hires/2020-09-18T09%3A06%3A54/tfl-daily-cycle-hires.xlsx?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAJJDIMAIVZJDICKHA%2F20201019%2Feu-west-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20201019T170030Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=8af6b7762fafbf2809192af1683b18503f3468d9be15f0c9745a3a00f808ab6b&amp;X-Amz-SignedHeaders=host]
+##   Date: 2020-10-19 17:03
 ##   Status: 200
 ##   Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 ##   Size: 165 kB
-## &lt;ON DISK&gt;  C:\Users\86188\AppData\Local\Temp\RtmpayI8n6\file4b0840272609.xlsx</code></pre>
+## &lt;ON DISK&gt;  C:\Users\86188\AppData\Local\Temp\RtmpcbE3lR\file39070fd69dd.xlsx</code></pre>
 <pre class="r"><code># Use read_excel to read it as dataframe
 bike0 &lt;- read_excel(bike.temp,
                    sheet = &quot;Data&quot;,
@@ -43,13 +40,25 @@ bike &lt;- bike0 %&gt;%
   mutate(expected_rentals=median(bikes_hired)) %&gt;% 
   ungroup %&gt;% 
   group_by(month, year) %&gt;% 
-  summarise(expected_rentals = median(expected_rentals), actual_rentals = median(bikes_hired)) %&gt;% 
+  summarise(expected_rentals = median(expected_rentals), 
+            actual_rentals = median(bikes_hired)) %&gt;% 
   mutate(excess_rentals = actual_rentals - expected_rentals)
   
-ggplot(bike_graph1, aes(x=month, group=1))+
-  geom_ribbon(aes(ymin = ifelse(actual_rentals &lt; expected_rentals, actual_rentals, expected_rentals), ymax = expected_rentals),fill= &quot;green&quot;, alpha=0.1)+
-  geom_ribbon(aes(ymin=expected_rentals, ymax=ifelse(actual_rentals &gt; expected_rentals, actual_rentals, expected_rentals)),fill=&quot;red&quot;, alpha=0.1)+
-    geom_line(aes(y=expected_rentals), color= &quot;blue&quot;, size=0.5)+
+ggplot(bike_graph1, 
+       aes(x=month, group=1))+
+  geom_ribbon(aes(ymin = ifelse(actual_rentals &lt; expected_rentals, 
+                                actual_rentals, expected_rentals), 
+                  ymax = expected_rentals),
+              fill= &quot;green&quot;, 
+              alpha=0.1)+
+  geom_ribbon(aes(ymin=expected_rentals, 
+                  ymax=ifelse(actual_rentals &gt; expected_rentals, 
+                              actual_rentals, expected_rentals)),
+              fill=&quot;red&quot;, 
+              alpha=0.1)+
+    geom_line(aes(y=expected_rentals), 
+              color= &quot;blue&quot;, 
+              size=0.5)+
     geom_line(aes(y=actual_rentals))+
     facet_wrap(~year)+
   theme_bw()</code></pre>
@@ -66,18 +75,30 @@ ggplot(bike_graph1, aes(x=month, group=1))+
   mutate(percentage_change = actual_bikes_hired / weekly_average - 1)
 
  
-ggplot(bike_graph2, aes(x=week, group=1))+
-  geom_rect(xmin=13,xmax=26, ymin=-0.6, ymax=0.6, colour=&quot;grey&quot;, alpha=0.003)+
-  geom_rect(xmin=39,xmax=52, ymin=-0.6, ymax=0.6, colour=&quot;grey&quot;, alpha=0.003)+
+ggplot(bike_graph2, 
+       aes(x=week, group=1))+
+  geom_rect(xmin=13,xmax=26, 
+            ymin=-0.6, ymax=0.6, 
+            colour=&quot;grey&quot;, 
+            alpha=0.003)+
+  geom_rect(xmin=39,xmax=52, 
+            ymin=-0.6,ymax=0.6, 
+            colour=&quot;grey&quot;, 
+            alpha=0.003)+
   geom_ribbon(aes(ymin=0,
-                  ymax=ifelse(percentage_change&gt;0,percentage_change ,0)), 
-              fill=&quot;green&quot; ,alpha=0.15)+
-  geom_ribbon(aes(ymin=ifelse(percentage_change&lt;0, percentage_change,0), 
+                  ymax=ifelse(percentage_change&gt;0,
+                              percentage_change ,0)), 
+              fill=&quot;green&quot; ,
+              alpha=0.15)+
+  geom_ribbon(aes(ymin=ifelse(percentage_change&lt;0, 
+                              percentage_change,0), 
                   ymax=0), 
-              fill=&quot;red&quot;, alpha=0.15)+
+              fill=&quot;red&quot;, 
+              alpha=0.15)+
   geom_line(aes(y=percentage_change))+
   geom_rug(side=&quot;week&quot;, 
-           aes(color=ifelse(percentage_change&lt;0,&quot;red&quot;, &quot;green&quot;)))+
+           aes(color=ifelse(percentage_change&lt;0,
+                            &quot;red&quot;, &quot;green&quot;)))+
   guides(color=FALSE)+
   scale_x_continuous(breaks=c(13,26,39,52))+
   scale_y_continuous(labels=scales::percent)+
