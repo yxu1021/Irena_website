@@ -7,8 +7,16 @@ keywords: ""
 categories: 
     - ""
     - ""
-date: 2017-10-31T21:28:43-05:00
 draft: false
 ---
+# On-demand delivery
+Recently, I'm interested in the listing of DADA, a Chinese on-demand delivery company, for the market it is operating in. 
 
-On-demand
+On-demand delivery refers to where the company responds to demands within hours. On-demand delivery started with take-away food delivery and is gradually extending to all categories including medicines, groceries etc. There are 3 reasons why this market is attractive.
+
+Firstly, the market is big. In 2019, the market size reached 141 bn RMB with 19.3 bn orders, and was expected to reach 1 trillion RMB in the next 10 years. On-demand delivery further expanded the coverage of offline stores by 3-5 kilometers. Such urban close-range e-commerce can effectively catch up with the changes in Chinese population.
+
+Secondly, the profitability is attractive. For the industry of transportation, scale effect and barriers would generally decrease as the average weight of delivery units increase. The average net profit margin of Chinese Express Companies is around 8%, so we can expect on-demand delivery to perform better in the future.
+
+Thirdly, the economics of scale works perfectly in the transportation industry, so does in the on-demand delivery. So, top players can develop advantages based on their existing leading positions and occupy more market shares.
+
